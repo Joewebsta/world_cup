@@ -1,0 +1,15 @@
+require './lib/player'
+
+describe Player do
+  describe '#init' do
+    subject { Player.new({ name: 'Luka Modric', position: 'midfielder' }) }
+
+    it 'has a name' do
+      expect(subject.name).to eql 'Luka Modric'
+    end
+
+    it 'has a position' do
+      expect(subject.position).to eql 'midfielder'
+    end
+  end
+end
