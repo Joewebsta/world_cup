@@ -28,4 +28,17 @@ describe WorldCup do
       expect(subject.teams).to eql([@france, @croatia])
     end
   end
+
+  describe '#active_players_by_position' do
+    it 'filters players by position when none of the teams have been eliminated' do
+      active_players = subject.active_players_by_position('midfielder')
+      expect(active_players).to eql([@pogba, @modric])
+    end
+
+    it 'filters players by position when some teams have been eliminated' do
+      @croatia.eliminated = true
+      active_players = subject.active_players_by_position('midfielder')
+      expect(active_players).to eql([@pogba])
+    end
+  end
 end
